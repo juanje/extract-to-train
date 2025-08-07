@@ -13,7 +13,7 @@ from typing import Any
 
 import markdown
 from docling.document_converter import DocumentConverter
-from pydantic import BaseModel
+from pydantic import BaseModel, computed_field
 
 logger = logging.getLogger(__name__)
 
@@ -30,13 +30,18 @@ class ExtractedChunk(BaseModel):
     page_number: int | None = None
     chunk_type: str = "text"  # text, table, header, etc.
     source_section: str | None = None
-    word_count: int = 0
-    char_count: int = 0
 
-    def __post_init__(self) -> None:
-        """Calculate metrics after initialization."""
-        self.word_count = len(self.content.split())
-        self.char_count = len(self.content)
+    @computed_field  # Pydantic v2 way
+    @property
+    def word_count(self) -> int:
+        """Calculate word count automatically."""
+        return len(self.content.split())
+
+    @computed_field  # Pydantic v2 way
+    @property
+    def char_count(self) -> int:
+        """Calculate character count automatically."""
+        return len(self.content)
 
 
 class DocumentMetadata(BaseModel):
