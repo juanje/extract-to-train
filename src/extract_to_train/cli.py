@@ -8,9 +8,10 @@ features, detailed help, and transparent processing insights.
 import asyncio
 import json
 import logging
+import os
 import sys
 from pathlib import Path
-from typing import Any
+from typing import Any, Dict
 
 import typer
 from rich.console import Console
@@ -104,10 +105,10 @@ def extract(
         max=1000,
     ),
     model_extract: str = typer.Option(
-        "llama3.1:8B", "--model-extract", help="Model for Q&A generation"
+        "llama3.1:8b", "--model-extract", help="Model for Q&A generation"
     ),
     model_validate: str = typer.Option(
-        "deepseek-r1:8B", "--model-validate", help="Model for dataset validation"
+        "deepseek-r1:8b", "--model-validate", help="Model for dataset validation"
     ),
     temperature_extract: float = typer.Option(
         0.3,
@@ -710,16 +711,16 @@ def _show_configuration_explanations() -> None:
         "ℹ️ [bold yellow]Note:[/bold yellow] These options are used with the [cyan]extract[/cyan] command, not [cyan]config[/cyan]"
     )
     console.print(
-        "📝 Example: [dim]extract-to-train extract document.pdf --model-extract llama3.1:8B[/dim]"
+        "📝 Example: [dim]extract-to-train extract document.pdf --model-extract llama3.1:8b[/dim]"
     )
     console.print()
 
     # Model configurations
     console.print("🤖 [bold]Model Settings (for 'extract' command):[/bold]")
     console.print("   • [cyan]--model-extract[/cyan]: LLM for generating Q&A pairs")
-    console.print("     Recommended: llama3.1:8B (best instruction following)")
+    console.print("     Recommended: llama3.1:8b (best instruction following)")
     console.print("   • [cyan]--model-validate[/cyan]: LLM for quality validation")
-    console.print("     Recommended: deepseek-r1:8B (superior reasoning)")
+    console.print("     Recommended: deepseek-r1:8b (superior reasoning)")
     console.print()
 
     # Temperature settings
@@ -789,9 +790,9 @@ def _show_configuration_explanations() -> None:
 def _show_current_configuration() -> None:
     """Show the current default configuration."""
     # Lazy imports to improve CLI startup time
-    from .models.config import AppConfig
+    from extract_to_train.utils.config import get_config_from_env
 
-    config = AppConfig.get_educational_config()
+    config = get_config_from_env()
 
     console.print("⚙️ [bold blue]Current Configuration[/bold blue]")
     console.print()

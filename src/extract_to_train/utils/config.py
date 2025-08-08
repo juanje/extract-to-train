@@ -9,8 +9,12 @@ import os
 from pathlib import Path
 
 import yaml
+from dotenv import load_dotenv
 
 from ..models.config import AppConfig
+
+# Load environment variables from .env file if it exists
+load_dotenv()
 
 
 def load_config_from_file(config_path: Path) -> AppConfig:
