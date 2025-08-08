@@ -1,0 +1,33 @@
+# Sample configuration file for testing
+# This file contains valid configuration data for integration tests
+
+ollama:
+  host: "http://localhost:11434"
+  timeout: 60
+  max_retries: 3
+
+models:
+  extraction:
+    name: "llama3.2:3b"
+    temperature: 0.1
+    context_window: 4096
+    explanation: "Fast model for document extraction"
+  
+  validation:
+    name: "llama3.2:3b"
+    temperature: 0.0
+    context_window: 4096
+    explanation: "Precise model for Q&A validation"
+
+processing:
+  chunk_size: 1000
+  chunk_overlap: 200
+  max_pairs_per_chunk: 3
+  quality_threshold: 0.7
+
+generation:
+  question_types: ["factual", "inferential"]
+  difficulty_levels: ["easy", "medium"]
+  min_answer_length: 50
+  max_answer_length: 300
+  context_relevance_threshold: 0.8

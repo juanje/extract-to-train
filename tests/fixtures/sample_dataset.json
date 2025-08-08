@@ -1,0 +1,64 @@
+{
+  "format": "alpaca",
+  "qa_pairs": [
+    {
+      "question": "What is machine learning?",
+      "answer": "Machine learning is a subset of artificial intelligence that enables systems to automatically learn and improve from experience without being explicitly programmed.",
+      "question_type": "factual",
+      "difficulty": "easy",
+      "confidence": 0.95,
+      "source_page": 1,
+      "metadata": {
+        "chunk_id": "chunk_001",
+        "generation_time": 1.23
+      }
+    },
+    {
+      "question": "How does supervised learning differ from unsupervised learning?",
+      "answer": "Supervised learning uses labeled training data to learn patterns and make predictions, while unsupervised learning finds hidden patterns in data without labeled examples.",
+      "question_type": "comparative",
+      "difficulty": "medium",
+      "confidence": 0.88,
+      "source_page": 2,
+      "metadata": {
+        "chunk_id": "chunk_002",
+        "generation_time": 2.15
+      }
+    },
+    {
+      "question": "Why is data preprocessing important in machine learning?",
+      "answer": "Data preprocessing is crucial because it improves data quality, removes noise and inconsistencies, handles missing values, and transforms data into a format suitable for machine learning algorithms.",
+      "question_type": "inferential",
+      "difficulty": "medium",
+      "confidence": 0.92,
+      "source_page": 3,
+      "metadata": {
+        "chunk_id": "chunk_003",
+        "generation_time": 1.87
+      }
+    }
+  ],
+  "stats": {
+    "total_pairs": 3,
+    "avg_confidence_score": 0.91,
+    "validation_pass_rate": 1.0,
+    "question_type_distribution": {
+      "factual": 1,
+      "comparative": 1,
+      "inferential": 1
+    },
+    "difficulty_distribution": {
+      "easy": 1,
+      "medium": 2
+    },
+    "avg_answer_length": 87.3,
+    "creation_date": "2024-01-15T10:30:00Z"
+  },
+  "metadata": {
+    "source_document": "ml_basics.pdf",
+    "total_pages": 5,
+    "extraction_method": "docling",
+    "model_used": "llama3.2:3b",
+    "processing_time": 45.2
+  }
+}
