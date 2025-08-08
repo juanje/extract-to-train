@@ -194,7 +194,7 @@ class DatasetStats(BaseModel):
     and diversity, which are key factors for successful fine-tuning.
     """
 
-    total_pairs: int = Field(description="Total number of Q&A pairs")
+    total_pairs: int = Field(ge=0, description="Total number of Q&A pairs")
     avg_question_length: int = Field(
         description="Average question length in characters"
     )
